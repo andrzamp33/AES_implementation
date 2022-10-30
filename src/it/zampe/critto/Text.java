@@ -27,13 +27,16 @@ public class Text extends State{
     }
 
     void shiftRows(){
-        for(int i = 1; i < state.length; i++) {
-            int[] support = state[i];
-            for(int j = 0; j < state.length; j++) {
-                state[i][j] = support[(j + i) % state.length];
-            }
+        for(int i = 1; i < state.length; i++)
+            for(int j = 0; j < i; j++)
+                shift(state[i]);
 
-        }
+    }
 
+    private void shift(int[] arr){
+        int head = arr[0];
+        for(int i = 0; i < arr.length - 1; i++)
+            arr[i] = arr[i+1];
+        arr[arr.length-1] = head;
     }
 }
