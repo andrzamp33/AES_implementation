@@ -6,9 +6,9 @@ package it.zampe.critto;
 public abstract class State {
 
     /**
-     * A matrix of bytes that represents the state
+     * A matrix of int(bytes) that represents the state
      */
-    private byte[][] state;
+    protected int[][] state;
 
     /**
      * Constructor that instantiates the 4 by 4 matrix
@@ -16,20 +16,14 @@ public abstract class State {
      *              from the top left one to the bottom right one, following the rows order.
      * @pre the array must be in the correct form and must contain all 16 bytes.
      */
-    protected State(final byte[] bytes){
-        state = new byte[4][4];
+    protected State(final int[] bytes){
+        state = new int[4][4];
         int currentArrayIndex = 0;
         for(int i = 0; i < state.length; i++)
             for(int j = 0; j < state.length; j++)
                 state[i][j] = bytes[currentArrayIndex++];
     }
 
-    /**
-     * Uses the s-box to substitute the bytes in the text
-     */
-    void subByte(){
-
-    }
 
     /**
      * AF: returns the string representation of the state as follows:
@@ -44,9 +38,15 @@ public abstract class State {
         for(int i = 0; i < state.length; i++){
             s.append('[');
             for(int j = 0; j < state.length; j++){
-                s.append(state[i][j]);
+                s.append("0x");
+                String p = Integer.toHexString(state[i][j]);
+                if(p.length() == 1) p = "0" + p;
+                if(p.length() > 2)
+                    p = p.substring(p.length() - 2);
+                s.append(p);
                 if(j != state.length-1)
                     s.append("; ");
+
             }
             s.append("]\n");
         }
