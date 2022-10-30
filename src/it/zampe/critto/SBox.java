@@ -1,7 +1,7 @@
 package it.zampe.critto;
 
 /**
- * A singleton which represent the s-box and its substitution methods
+ * A singleton which represents the s-box and its substitution methods
  * Concrete and immutable ADT
  */
 public class SBox {
@@ -30,12 +30,19 @@ public class SBox {
 
     private SBox(){};
 
+    /**
+     * @return the single instance of the s-box
+     */
     static SBox getInstance(){
         if(instance == null)
             instance = new SBox();
         return instance;
     }
 
+    /**
+     * @param b the byte wanted to be mapped with the s-box
+     * @return the substitution of the byte b with the s-box-mapped value
+     */
     int apply(int b) {
         String s = Integer.toHexString(b);
         if(s.length() == 1) s = "0" + s;

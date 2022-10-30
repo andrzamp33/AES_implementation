@@ -1,7 +1,7 @@
 package it.zampe.critto;
 
 /**
- * Concrete and immutable singleton class which represent the matrix used in the MixColumns procedure.
+ * Concrete and immutable singleton class which represents the matrix used in the MixColumns procedure.
  */
 public class ConstantMatrix {
 
@@ -19,7 +19,7 @@ public class ConstantMatrix {
     /**
      * @return The instance of the singleton, which is the matrix used for MixColumns
      */
-    public ConstantMatrix getInstance(){
+    static ConstantMatrix getInstance(){
         if(instance == null)
             instance = new ConstantMatrix();
         return instance;
@@ -29,7 +29,7 @@ public class ConstantMatrix {
      * @param vector the vector you want to be multiplied with the matrix
      * @return the new vector after the multiplications
      */
-    public int[] apply(final int[] vector){
+    int[] apply(final int[] vector){
         int[] result = new int[vector.length];
         for(int i = 0; i < matrix.length; i++){
             result[i] = multiply(matrix[i], vector);

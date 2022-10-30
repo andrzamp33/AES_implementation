@@ -18,6 +18,7 @@ public class Text extends State{
 
     /**
      * Uses the s-box to substitute the bytes in the text
+     * First phase of the AES encryption during the middle 9 rounds
      */
     void subByte(){
         SBox sBox = SBox.getInstance();
@@ -26,6 +27,9 @@ public class Text extends State{
                 state[i][j] = sBox.apply(state[i][j]);
     }
 
+    /**
+     * Second phase of the AES encryption during the middle 9 rounds
+     */
     void shiftRows(){
         for(int i = 1; i < state.length; i++)
             for(int j = 0; j < i; j++)
@@ -33,6 +37,11 @@ public class Text extends State{
 
     }
 
+    /**
+     * internally used to factor code
+     * this method makes a single left shift in the array passed
+     * @param arr the array to singularly left shift
+     */
     private void shift(int[] arr){
         int head = arr[0];
         for(int i = 0; i < arr.length - 1; i++)
