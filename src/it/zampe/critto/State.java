@@ -25,6 +25,13 @@ public abstract class State {
     }
 
     /**
+     * Uses the s-box to substitute the bytes in the text
+     */
+    void subByte(){
+
+    }
+
+    /**
      * AF: returns the string representation of the state as follows:
      * [state1,1; state1,2; state1,3; state1,4]
      * [state2,1; state2,2; state2,3; state2,4]
