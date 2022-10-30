@@ -26,4 +26,14 @@ public class Text extends State{
                 state[i][j] = sBox.apply(state[i][j]);
     }
 
+    void shiftRows(){
+        for(int i = 1; i < state.length; i++) {
+            int[] support = state[i];
+            for(int j = 0; j < state.length; j++) {
+                state[i][j] = support[(j + i) % state.length];
+            }
+
+        }
+
+    }
 }

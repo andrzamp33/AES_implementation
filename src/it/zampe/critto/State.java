@@ -41,8 +41,6 @@ public abstract class State {
                 s.append("0x");
                 String p = Integer.toHexString(state[i][j]);
                 if(p.length() == 1) p = "0" + p;
-                if(p.length() > 2)
-                    p = p.substring(p.length() - 2);
                 s.append(p);
                 if(j != state.length-1)
                     s.append("; ");
