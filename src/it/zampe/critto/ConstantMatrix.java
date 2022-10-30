@@ -46,8 +46,8 @@ public class ConstantMatrix {
     private int multiply(int[] matVector, int[] vector){
         int sum = 0;
         for(int i = 0; i < matVector.length; i++){
-            sum += matVector[i] * vector[i];
+            sum ^= matVector[i] * vector[i];
         }
-        return sum;
+        return sum % 0x11;
     }
 }

@@ -37,6 +37,18 @@ public class Text extends State{
 
     }
 
+    void mixColumns(){
+        ConstantMatrix matrix = ConstantMatrix.getInstance();
+        for(int i = 0; i < state.length; i++) {
+            int[] res = new int[state.length];
+            for(int j = 0; j < state.length; j++)
+                res[j] = state[j][i];
+            res = matrix.apply(res);
+            for(int j = 0; j < state.length; j++)
+                state[j][i] = res[j];
+        }
+    }
+
     /**
      * internally used to factor code
      * this method makes a single left shift in the array passed
